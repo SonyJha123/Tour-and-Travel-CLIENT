@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (max-width: 640px) {
+    .meal-type-table th, .meal-type-table td {
+        font-size: 0.8rem; /* Smaller font size on small screens */
+    }
+}
