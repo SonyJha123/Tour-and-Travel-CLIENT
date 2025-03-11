@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback,useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import CustomInput from '../../Components/CustomInput';
@@ -170,7 +170,7 @@ const Room = () => {
         });
     };
 
-    const initializePricingData = () => {
+    const initializePricingData = useCallback(() => {
         const pricingData = {
             ANNUAL: {},
             QUARTERLY: {},
@@ -195,13 +195,13 @@ const Room = () => {
                 };
             });
         });
-
+    
         return pricingData;
-    };
-
+    }, [roomTypes, selectedMealTypes]);
+    
     useEffect(() => {
         setPricingData(initializePricingData());
-    }, [roomTypes, selectedMealTypes]);
+    }, [initializePricingData]);
 
     const handleMealTypeChange = (mealType) => {
         setSelectedMealTypes((prev) =>
