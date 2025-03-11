@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Define an async thunk for creating a room
 const backendURL = process.env.REACT_APP_API_URL;
 const roomApi = process.env.REACT_APP_ROOM_CREATE_API;
 export const createRoom = createAsyncThunk(

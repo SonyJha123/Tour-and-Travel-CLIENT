@@ -1,4 +1,3 @@
-// src/pages/Hotels.jsx
 import { useState } from 'react';
 import HotelTable from './HotelTable';
 import HotelModal from './HotelModal';
@@ -13,7 +12,6 @@ export default function Hotels() {
       <div className="fixed left-0 top-0 h-full w-64">
         <Sidebar />
       </div>
-      {/* Main Content */}
       <div className="ml-64 flex-1 p-8">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-800">Hotel Management</h1>

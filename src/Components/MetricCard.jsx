@@ -1,4 +1,3 @@
-// src/components/MetricCard.jsx
 export default function MetricCard({ title, value, trend, icon }) {
     return (
       <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">

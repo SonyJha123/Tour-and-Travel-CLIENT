@@ -1,15 +1,13 @@
-// src/components/HotelTable.jsx
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const mockData = [
   { id: 1, name: 'Luxury Resort', location: 'Maldives', status: 'Approved', rooms: 50, rating: 4.8 },
-  // Add more mock data...
 ];
 
 export default function HotelTable({ onEdit }) {
-  const [data, setData] = useState(mockData);
+  const [data] = useState(mockData);
   const [search, setSearch] = useState('');
-
+  
   const filteredData = data.filter(item =>
     item.name.toLowerCase().includes(search.toLowerCase()) ||
     item.location.toLowerCase().includes(search.toLowerCase())

@@ -15,7 +15,7 @@ const BasicInfo = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [propertyTypes, setPropertyTypes] = useState([
+    const [propertyTypes] = useState([
         { value: 'hotel', label: 'Hotel' },
         { value: 'apartments', label: 'Apartments' },
         { value: 'villa', label: 'Villa' },
@@ -24,7 +24,6 @@ const BasicInfo = () => {
     ]);
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
-
 
     const handleDeletePhone = (fieldName, index, values, setFieldValue) => {
         const currentPhones = [...values[fieldName]];
@@ -161,7 +160,6 @@ const BasicInfo = () => {
                 >
                     {({ setFieldValue, errors, touched, values }) => (
                         <Form>
-                            {/* Basic Information Section */}
                             <div className="bg-pink-50 p-6 rounded-md shadow-md space-y-4">
                                 <h1 className="text-[28px] font-bold text-gray-900">Basic Information</h1>
                                 <CustomInput
@@ -180,23 +178,13 @@ const BasicInfo = () => {
                                         options={propertyTypes}
                                         onChange={(selectedOption) => {
                                             setFieldValue('propertyType', selectedOption ? selectedOption.label : '');
-                                            // if (selectedOption && selectedOption.label) {
-                                            //     setPropertyTypes((prevTypes) => [...prevTypes,selectedOption]);
-                                            // }
                                         }}
-
-                                        // onCreateOption={(newValue) => {
-                                        //     const newOption = { value: newValue, label: newValue };
-                                        //     setPropertyTypes((prevTypes) => [...prevTypes, newOption]);
-                                        //     setFieldValue('propertyType', newOption.value);
-                                        // }}
                                         isSearchable={false}
                                         className={`mt-1 ${errors.propertyType && touched.propertyType ? 'border-red-500' : ''}`}
                                     />
                                     <ErrorMessage name="propertyType" component="div" className="text-red-500 text-sm" />
                                 </div>
 
-                                {/* Rating Section */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700">Rating</label>
                                     <div className="flex space-x-1">
@@ -319,10 +307,8 @@ const BasicInfo = () => {
                                     bgColor="bg-white"
                                 />
                             </div>
-                            {/* Contact Information section */}
                             <div className="bg-white-100 p-6 rounded-md shadow-md mt-8 space-y-4">
                                 <h2 className="text-[28px] font-bold text-gray-900">Contact Information</h2>
-                                {/* Sales Team */}
                                 <h4 className="font-bold mt-6">Sales Team:</h4>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <CustomInput
@@ -352,7 +338,7 @@ const BasicInfo = () => {
                                                     onClick={() => handleDeletePhone('salesPhones', index, values, setFieldValue)}
                                                     className="absolute right-2 top-9 text-red-500 hover:text-red-700"
                                                 >
-                                                  ✘
+                                                    ✘
                                                 </button>
                                             )}
                                             <ErrorMessage name={`salesPhones[${index}]`} component="div" className="text-red-500 text-sm" />
@@ -366,7 +352,6 @@ const BasicInfo = () => {
                                         + Add Another Phone Number
                                     </button>
                                 </div>
-                                {/* Operation Team */}
                                 <h4 className="font-bold mt-6">Operation Team:</h4>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <CustomInput
@@ -396,7 +381,7 @@ const BasicInfo = () => {
                                                     onClick={() => handleDeletePhone('operationPhones', index, values, setFieldValue)}
                                                     className="absolute right-2 top-9 text-red-500 hover:text-red-700"
                                                 >
-                                                  ✘
+                                                    ✘
                                                 </button>
                                             )}
                                             <ErrorMessage name={`operationPhones[${index}]`} component="div" className="text-red-500 text-sm" />
@@ -410,7 +395,6 @@ const BasicInfo = () => {
                                         + Add Another Phone Number
                                     </button>
                                 </div>
-                                {/* Front Office Team */}
                                 <h4 className="font-bold mt-6">Front Office Team:</h4>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <CustomInput
@@ -440,7 +424,7 @@ const BasicInfo = () => {
                                                     onClick={() => handleDeletePhone('frontOfficePhones', index, values, setFieldValue)}
                                                     className="absolute right-2 top-9 text-red-500 hover:text-red-700"
                                                 >
-                                                  ✘
+                                                    ✘
                                                 </button>
                                             )}
                                             <ErrorMessage name={`frontOfficePhones[${index}]`} component="div" className="text-red-500 text-sm" />
@@ -454,7 +438,6 @@ const BasicInfo = () => {
                                         + Add Another Phone Number
                                     </button>
                                 </div>
-                                {/* Management Team */}
                                 <h4 className="font-bold mt-6">Management Team:</h4>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <CustomInput
@@ -484,7 +467,7 @@ const BasicInfo = () => {
                                                     onClick={() => handleDeletePhone('managementPhones', index, values, setFieldValue)}
                                                     className="absolute right-2 top-9 text-red-500 hover:text-red-700"
                                                 >
-                                                  ✘
+                                                    ✘
                                                 </button>
                                             )}
                                             <ErrorMessage name={`managementPhones[${index}]`} component="div" className="text-red-500 text-sm" />
@@ -498,7 +481,6 @@ const BasicInfo = () => {
                                         + Add Another Phone Number
                                     </button>
                                 </div>
-                                {/* Website Field */}
                                 <div>
                                     <CustomInput
                                         id="website"

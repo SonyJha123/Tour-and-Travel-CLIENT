@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
 const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
     <Document>
         <Page size="A4" style={styles.page}>
-            {/* Basic Information */}
             <View style={styles.section}>
                 <Text style={styles.header}>{facilitiesInfo?.basicInformation?.name}</Text>
                 <Text style={styles.text}>Property Type: {facilitiesInfo?.basicInformation?.propertyType}</Text>
@@ -27,7 +26,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 <Text style={styles.text}>Description: {facilitiesInfo?.basicInformation?.description}</Text>
             </View>
 
-            {/* Contact Information */}
             <View style={styles.section}>
                 <Text style={styles.header}>Contact Information</Text>
                 <Text style={styles.text}>
@@ -41,7 +39,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 <Text style={styles.text}>Website: {facilitiesInfo?.contactInformation?.website || "N/A"}</Text>
             </View>
 
-            {/* Hotel Images */}
             <View style={styles.section}>
                 <Text style={styles.header}>Hotel Images</Text>
                 {roomInfo?.map((room, roomIndex) => (
@@ -51,7 +48,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 ))}
             </View>
 
-            {/* Nearby Attractions */}
             <View style={styles.section}>
                 <Text style={styles.header}>Nearby Attractions</Text>
                 {facilitiesInfo?.nearbyAttractions?.map((attraction, index) => (
@@ -63,7 +59,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
 
             <View style={styles.divider} />
 
-            {/* Facilities */}
             <View style={styles.section}>
                 <Text style={styles.header}>Facilities</Text>
                 {facilitiesInfo?.generalFacilities?.map((facilityGroup, groupIndex) => (
@@ -84,7 +79,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
 
             <View style={styles.divider} />
 
-            {/* Meal Types */}
             <View style={styles.section}>
                 <Text style={styles.header}>Meal Types</Text>
                 {facilitiesInfo?.mealType?.map((meal, index) => (
@@ -92,7 +86,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 ))}
             </View>
 
-            {/* Room Details */}
             {roomInfo?.map((room, index) => (
                 <View key={index} style={styles.section}>
                     <Text style={styles.header}>Room Type: {room.roomType}</Text>
@@ -102,7 +95,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                     <Text style={styles.text}>Total Pax: {room.totalPax}</Text>
                     <Text style={styles.text}>Room Count: {room.roomCount}</Text>
 
-                    {/* Pricing Table */}
                     <View style={styles.section}>
                         <Text style={styles.header}>Pricing</Text>
                         <View style={styles.table}>
@@ -121,7 +113,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                         </View>
                     </View>
 
-                    {/* Blackout Date Pricing */}
                     <View style={styles.section}>
                         <Text style={styles.header}>Blackout Date Pricing</Text>
                         <View style={styles.table}>
@@ -140,7 +131,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 </View>
             ))}
 
-            {/* Policies */}
             <View style={styles.section}>
                 <Text style={styles.header}>Policies</Text>
                 <Text style={styles.text}>Check-in: {facilitiesInfo?.policies?.checkIn}</Text>
@@ -150,7 +140,6 @@ const HotelPdfDocument = ({ roomInfo = [], facilitiesInfo = {} }) => (
                 </Text>
             </View>
 
-            {/* Supplements */}
             <View style={styles.section}>
                 <Text style={styles.header}>Supplements</Text>
                 {facilitiesInfo?.supplements?.map((supplement, index) => (

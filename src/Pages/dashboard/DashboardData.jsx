@@ -31,17 +31,6 @@ const DashboardData = React.memo(() => {
                     icon="📊"
                 />
             </div>
-
-            {/* <QuickActions />
-
-            <div className="grid md:grid-cols-2 gap-6">
-                <ChartCard title="Booking Trends">
-                    <div className="h-64 bg-gray-100 rounded-lg"></div>
-                </ChartCard>
-                <ChartCard title="Revenue Distribution">
-                    <div className="h-64 bg-gray-100 rounded-lg"></div>
-                </ChartCard>
-            </div> */}
         </div>
     )
 });

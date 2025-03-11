@@ -12,7 +12,6 @@ const Facilities = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { data, hotelData } = location.state || {};
-  // console.log(data, hotelData)
   const navigate = useNavigate();
   const [facilities, setFacilities] = useState({
     "Accommodation and Relaxation Facilities": ["Bed", "Living Room", "Fitness Center"],
@@ -103,7 +102,6 @@ const Facilities = () => {
         nearbyAttractions: values.attractions,
       };
 
-      console.log(submittedValues);
       const payload = {
         ...submittedValues,
       };

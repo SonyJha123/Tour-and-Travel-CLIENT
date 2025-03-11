@@ -1,4 +1,3 @@
-// src/components/ChartCard.jsx
 export default function ChartCard({ title, children }) {
     return (
       <div className="bg-white p-6 rounded-xl shadow-lg mb-6">

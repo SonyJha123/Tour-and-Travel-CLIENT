@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// Define an async thunk for creating a hotel
 const backendURL = process.env.REACT_APP_API_URL;
 const hotelApi =process.env.REACT_APP_HOTEL_CREATE_API;
 export const createHotel = createAsyncThunk(

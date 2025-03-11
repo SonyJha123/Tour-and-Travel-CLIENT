@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Define an async thunk for updating facilities
 const backendURL = process.env.REACT_APP_API_URL;
 const updateHotelApi =process.env.REACT_APP_HOTEL_UPDATE_API_FACILITIES;
 
@@ -18,7 +17,6 @@ export const updateFacilities = createAsyncThunk(
 
             if (!response.ok) {
                 const errorData = await response.json();
-                console.log(errorData)
                 return rejectWithValue(errorData.message);
             }
 

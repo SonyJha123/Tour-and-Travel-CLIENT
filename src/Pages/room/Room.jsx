@@ -114,13 +114,9 @@ const Room = () => {
             subcategories: []
         }
     ]);
-
-
-    const [newAmenity, setNewAmenity] = useState("");
+    
     const [newSubcategory, setNewSubcategory] = useState("");
-
     const [customAmenity, setCustomAmenity] = useState("");
-
     const [quarterPlan, setQuarterPlan] = useState('Jan-Mar');
     const [showQuarterPlan, setShowQuarterPlan] = useState(false);
 
@@ -158,7 +154,6 @@ const Room = () => {
         }
     };
 
-    // Update the checkbox handler
     const handleCheckboxChange = (mainIndex, subIndex, roomType) => {
         setAmenities(prev => {
             const updated = [...prev];
@@ -178,12 +173,10 @@ const Room = () => {
     const initializePricingData = () => {
         const pricingData = {
             ANNUAL: {},
-            // BI_ANNUAL: {},
             QUARTERLY: {},
         };
         roomTypes.forEach(roomType => {
             pricingData.ANNUAL[roomType.type] = {};
-            // pricingData.BI_ANNUAL[roomType.type] = {};
             pricingData.QUARTERLY[roomType.type] = {};
             selectedMealTypes.forEach(mealPlan => {
                 pricingData.ANNUAL[roomType.type][`${mealPlan}_based_Price`] = {
@@ -193,13 +186,6 @@ const Room = () => {
                     child: "",
                     noChild: "",
                 };
-                // pricingData.BI_ANNUAL[roomType.type][`${mealPlan}_based_Price`] = {
-                //     single: "",
-                //     double: "",
-                //     extraBed: "",
-                //     child: "",
-                //     noChild: "",
-                // };
                 pricingData.QUARTERLY[roomType.type][`${mealPlan}_based_Price`] = {
                     single: "",
                     double: "",
@@ -312,10 +298,8 @@ const Room = () => {
                 children: '',
                 pax: '',
             }));
-            // Update room types
             setRoomTypes(newRooms);
             setFieldValue('rooms', newRooms);
-            // Update amenities to include new room types
             setAmenities(prevAmenities => prevAmenities.map(mainCategory => ({
                 ...mainCategory,
                 subcategories: mainCategory.subcategories.map(subcategory => ({
@@ -349,10 +333,6 @@ const Room = () => {
     };
 
     const removeImage = (roomType, imageIndex) => {
-        // setRoomImages(prevImages => ({
-        //     ...prevImages,
-        //     [roomType]: prevImages[roomType].filter((_, idx) => idx !== imageIndex),
-        // }));
         setAllImages(prevImages => ({
             ...prevImages,
             [roomType]: prevImages[roomType].filter((_, idx) => idx !== imageIndex),
@@ -363,9 +343,7 @@ const Room = () => {
         const files = Array.from(event.target.files);
         const newImages = files.map(file => file);
         const newAllImages = (files.map(file => URL.createObjectURL(file)))
-        console.log('prevImages', allImages);
         setAllImages(prevImages => {
-            console.log('newImages', [...(prevImages[roomType] || []), ...newAllImages]);
             return {
                 ...prevImages,
                 [roomType]: [...(prevImages[roomType] || []), ...newAllImages],
@@ -513,17 +491,10 @@ const Room = () => {
         const roomAmenities = {};
 
         roomTypes.forEach(roomType => {
-            // Initialize room type in amenities
             roomAmenities[roomType.type] = {};
-
-            // Iterate through each main category
             amenities.forEach(mainCategory => {
-                // Initialize category array for this room type
                 roomAmenities[roomType.type][mainCategory.name] = [];
-
-                // Check each subcategory in the main category
                 mainCategory.subcategories.forEach(subcategory => {
-                    // If this room type is selected for the subcategory, add it
                     if (subcategory.selected.includes(roomType.type)) {
                         roomAmenities[roomType.type][mainCategory.name].push(subcategory.name);
                     }
@@ -542,7 +513,6 @@ const Room = () => {
             hotelId: locationData ? locationData.hotel._id : "67c15bdd9a1cf3b6e6d2d7a5",
             roomImages: roomImages,
         };
-        // console.log(JSON.stringify(plainData));
         try {
             setLoading(true);
             const resultAction = await dispatch(createRoom(plainData));
@@ -577,7 +547,6 @@ const Room = () => {
                         </div>
                     }
                     <h3 className="text-2xl font-bold mb-4 text-center">Room Information</h3>
-                    {/* Room Section */}
                     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 pb-5'>
                         <CustomInput
                             id="totalInventorySize"
@@ -604,7 +573,6 @@ const Room = () => {
                         />
                     </div>
 
-                    {/* Room type table Section */}
                     <div className="bg-white p-4 rounded shadow">
                         <table className="table-auto w-full">
                             <thead>
@@ -672,19 +640,13 @@ const Room = () => {
                         {errors.rooms && touched.rooms && (
                             <div className="text-red-500">
                                 {Array.isArray(errors.rooms) ? (
-                                    <>
-                                        {/* don't use this due this */}
-                                        {/*  errors.rooms.map((error, index) => (
-                                         <div key={index}>{error}</div>
-                                     )) */}
-                                    </>
+                                    <></>
                                 ) : (
                                     <div>{errors.rooms}</div>
                                 )}
                             </div>
                         )}
                     </div>
-                    {/* Meal type Section */}
                     <div className="mb-4 pt-6">
                         <label className="mr-2 font-medium text-gray-700 mb-4 ">Select Meal Types:</label>
                         <div>
@@ -706,7 +668,6 @@ const Room = () => {
                         <select className='bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                             onChange={handlePlanChange} value={selectedPlan}>
                             <option value="ANNUAL">ANNUAL</option>
-                            {/* <option value="BI_ANNUAL">BI_ANNUAL</option> */}
                             <option value="QUARTERLY">QUARTERLY</option>
                         </select>
                         {showQuarterPlan && (
@@ -723,7 +684,6 @@ const Room = () => {
                         )}
                     </div>
 
-                    {/* Meal type table Section */}
                     <div className="bg-white p-4 rounded shadow mb-4">
                         <h4 className="text-xl font-semibold mb-4">{selectedPlan} Pricing {quarterPlan}</h4>
                         <div className="overflow-x-auto">
@@ -783,7 +743,6 @@ const Room = () => {
                         </div>
                     </div>
 
-                    {/* Blackout Dates Section */}
                     <div className="mb-4">
                         <label className="mr-2 font-medium text-gray-700 mb-4">Select Blackout Dates:</label>
                         <select
@@ -877,7 +836,6 @@ const Room = () => {
                         ))}
                     </div>
 
-                    {/* Add on supplements Section */}
                     <div className="bg-white p-4 rounded shadow mb-4">
                         <h4 className="text-xl font-semibold mb-4 text-center">Add-Ons and Supplement Section</h4>
                         <table className="table-auto w-full">
@@ -1018,16 +976,15 @@ const Room = () => {
                         </div>
                     </div>
 
-                    {/* Image Section */}
                     <div className="bg-white p-4 rounded shadow mb-4">
                         <h3 className="text-lg font-medium mb-4">Room Images</h3>
                         {roomTypes.map((room, index) => (
                             <div key={index} className="mb-4">
                                 <h4 className="text-lg font-medium mb-2">{room.type} Images</h4>
                                 <div className="flex flex-wrap">
-                                    {allImages[room.type] && allImages[room.type].map((image, imgIndex) => (
+                                    {allImages[room.type] && allImages[room.type].map((imageData, imgIndex) => (
                                         <div key={imgIndex} className="relative mr-2 mb-2">
-                                            <img src={image} alt={`Room ${room.type} Image ${imgIndex + 1}`} className="w-32 h-32 object-cover rounded" />
+                                            <img src={imageData} alt={`${room.type} ${imgIndex + 1}`} className="w-32 h-32 object-cover rounded" />
                                             <button
                                                 type="button"
                                                 onClick={() => removeImage(room.type, imgIndex)}
@@ -1038,8 +995,6 @@ const Room = () => {
                                         </div>
                                     ))}
                                 </div>
-                                {/* File Input */}
-                                {/* File Input */}
                                 <div className="mt-2">
                                     <label className="block text-sm font-medium text-gray-700">Upload Images</label>
                                     <input
@@ -1049,13 +1004,11 @@ const Room = () => {
                                         onChange={(e) => handleImageUpload(room.type, e)}
                                         className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                                     />
-                                    {/* <div className="text-sm text-gray-500">Drag and drop or click to upload</div> */}
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Amenities Section */}
                     <div className="bg-white p-4 rounded shadow mb-4">
                         <h3 className="font-medium text-gray-700 mb-4 text-center">Room Amenities</h3>
                         <table className="table-auto w-full">
@@ -1069,7 +1022,6 @@ const Room = () => {
                             <tbody>
                                 {amenities.map((mainCategory, mainIndex) => (
                                     <React.Fragment key={mainIndex}>
-                                        {/* Main Category Row */}
                                         <tr>
                                             <td className="border px-4 py-2 font-bold bg-gray-100" colSpan="3">
                                                 <div className="flex justify-between items-center">
@@ -1088,7 +1040,6 @@ const Room = () => {
                                                 </div>
                                             </td>
                                         </tr>
-                                        {/* Add Subcategory Input - Always visible for Others */}
                                         {mainCategory.name !== 'Others' && mainCategory.isAdding && (
                                             <tr>
                                                 <td className="border px-4 py-2" colSpan="3">
@@ -1111,7 +1062,6 @@ const Room = () => {
                                                 </td>
                                             </tr>
                                         )}
-                                        {/* Subcategory Rows */}
                                         {mainCategory.subcategories.map((subcategory, subIndex) => (
                                             <tr key={`${mainIndex}-${subIndex}`}>
                                                 <td className="border px-4 py-2"></td>

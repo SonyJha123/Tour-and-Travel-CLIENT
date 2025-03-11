@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../features/auth/authAction';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { loading, error } = useSelector((state) => state.auth);
 
     const [formData, setFormData] = useState({

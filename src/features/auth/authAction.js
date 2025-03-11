@@ -11,7 +11,6 @@ import {
 
 const backendURL = process.env.REACT_APP_API_URL;
 
-// Registration action
 export const registerUser  = createAsyncThunk(
     'auth/register',
     async (userData, { dispatch }) => {
@@ -26,7 +25,6 @@ export const registerUser  = createAsyncThunk(
     }
 );
 
-// Login action
 export const loginUser  = createAsyncThunk(
     'auth/login',
     async (userData, { dispatch }) => {

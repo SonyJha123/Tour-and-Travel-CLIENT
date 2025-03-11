@@ -1,4 +1,3 @@
-// src/components/HotelModal.jsx
 import { useEffect, useState } from 'react';
 
 export default function HotelModal({ isOpen, onClose, hotel }) {
